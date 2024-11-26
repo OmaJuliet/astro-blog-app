@@ -1,17 +1,13 @@
 ---
 const { post } = Astro.props;
-// const { slug, featuredImage, title, excerpt, author } = post.attributes;
-const { slug, featuredImage, title, excerpt, author } = post?.attributes || {};
+const { slug, featuredImage, title, excerpt, author } = post;
 
-// const url = import.meta.env.STRAPI_URL;
-const url = import.meta.env.STRAPI_URL || '';
+const url = import.meta.env.STRAPI_URL;
 
-// const authorImage = author.data.attributes.bioImage.data.attributes.url || null;
-// const postImage = featuredImage.data.attributes.url || null;
-const authorImage = author?.data?.attributes?.bioimage?.data?.attributes?.url || null;
-const postImage = featuredImage?.data?.attributes?.url || null;
+const authorImage = author.bioImage?.url || null;
+const postImage = post.featuredImage?.url || null;
 
-console.log("Post attributes:", post?.attributes);
+console.log("Logging posts here", post)
 ---
 
 <div
